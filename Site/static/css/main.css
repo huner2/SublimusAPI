@@ -1,0 +1,15 @@
+body {
+	padding-top: 70px;
+}
+.navbar-fixed-top{
+	background-color:#C94545;
+}
+.navbar-nav  > li > a{
+	color:white !important;
+}
+.navbar-nav > li{
+	border-radius:3px;
+}
+.navbar-nav > li:hover{
+	background-color:rgba(0,0,0,0.1)
+}

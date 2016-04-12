@@ -1,0 +1,14 @@
+{
+    "secret_key": "this_is_quite_the_secret_key",
+    
+    "host": "127.0.0.1",
+    "port": 69,
+    
+    "db": "sqlite:///users.db",
+	
+	"minimum_password_length": 8,
+
+    "debug": true,
+	
+	"testing": true
+}
