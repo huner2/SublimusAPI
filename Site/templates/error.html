@@ -1,0 +1,19 @@
+<div id="hook" hidden>{{ message }}</div>
+<div class="landing-page container welcome">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="circle">
+        <h1 class="text-danger" id="etitle">Error</h1>
+        <div class="circle-inner">
+          <p id="edesc">
+            <!-- Description Goes Here -->
+          </p>
+          <br>
+          <button type="button" class="btn btn-info" onclick="document.location='/'">Return to Home</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{{ url_for('static', filename='js/errordescriber.js') }}" 
+            type='text/javascript'></script>
