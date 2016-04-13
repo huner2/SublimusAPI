@@ -2,11 +2,15 @@ body {
 	padding-top: 70px;
 }
 .navbar-fixed-top{
-	background-color:#C94545;
+	/*background-color:#C94545;*/
+	background-color: #5F4775;
 }
 .navbar-nav  > li > a{
 	color:white !important;
 	font-size: 24px;
+	font-weight: bold;
+	-webkit-font-smoothing: antialiased;
+	text-shadow: #000 0px 0px 5px;
 }
 .navbar-nav > li{
 	border-radius:3px;
@@ -16,9 +20,13 @@ body {
 .navbar-nav > li:hover{
 	background-color:rgba(0,0,0,0.1)
 }
+.navbar-brand{
+	padding-right: 15px !important;
+	padding-top: 0px !important;
+}
 .navbar-brand > img{
 	z-index: 9999;
-	height:50px;
-	width:50px;
+	max-height:50px;
 	top:0px;
+	position:relative;
 }
