@@ -71,6 +71,16 @@ def license():
 		login=login, user=user)
 	return make_response(render)
 
+@app.route('/terms')
+def terms():
+    """Displays terms page"""
+
+    login, user = get_user()
+
+    render = render_template('frame.html', page='terms.html',
+        login=login, user=user)
+    return make_response(render)
+
 def session_login(username):
     """Initializes the session with the current user's id"""
     user = db['users'].find_one(username=username)

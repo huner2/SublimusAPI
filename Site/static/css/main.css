@@ -134,3 +134,9 @@ hr{
 	padding-top:2.5px;
 	padding-left:200px;
 }
+textarea{
+	width:90%;
+	height:500px;
+	left:5%;
+	resize:none;
+}
