@@ -61,6 +61,16 @@ def error(msg):
         message=message, login=login, user=user)
     return make_response(render)
 
+@app.route('/license')
+def license():
+	"""Displays license page"""
+	
+	login, user = get_user()
+	
+	render = render_template('frame.html', page='license.html',
+		login=login, user=user)
+	return make_response(render)
+
 def session_login(username):
     """Initializes the session with the current user's id"""
     user = db['users'].find_one(username=username)
