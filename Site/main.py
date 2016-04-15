@@ -90,6 +90,26 @@ def privacy():
     render = render_template('frame.html', page='privacy.html',
         login=login, user=user)
     return make_response(render)
+	
+@app.route('/about')
+def about():
+	"""Displays about page"""
+	
+	login, user = get_user()
+	
+	render = render_template('frame.html', page='about.html',
+		login=login, user=user)
+	return make_response(render)
+
+@app.route('/apis')
+def apis():
+	"""Displays api page"""
+	
+	login, user = get_user()
+	
+	render = render_template('frame.html', page='apis.html',
+		login=login, user=user)
+	return make_response(render)
 
 def session_login(username):
     """Initializes the session with the current user's id"""

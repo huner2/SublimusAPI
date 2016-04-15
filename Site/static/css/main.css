@@ -140,3 +140,13 @@ textarea{
 	left:5%;
 	resize:none;
 }
+.register > .form-group{
+	width:50% !important;
+	left:25% !important;
+	position:relative;
+}
+.register > input{
+	width: 50% !important;
+	left: 25% !important;
+	position:relative;
+}
