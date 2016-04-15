@@ -1,0 +1,23 @@
+<div class="container container-main">
+	<div class="jumbotron">
+        <form role="form" action="/logins" method="post" enctype="multipart/form-data">
+			<div class="register">
+                <center><h1>Login</h1></center>
+                <br/>
+                <div class="form-group">
+                    <div class="input-block-level">
+                        <input type="text" class="form-control" name="user" placeholder="User" required></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-block-level">
+                        <input type="password" class="form-control" name="password" placeholder="Password" required></span>
+                    </div>
+                </div>
+                
+                <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info btn-block">
+            </div>
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+        </form>
+	</div>
+</div>

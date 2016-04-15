@@ -4,6 +4,7 @@ import dataset
 import simplejson as json
 import time
 import re
+import urllib2
 from functools import wraps
 from base64 import b64decode
 from flask import Flask
@@ -111,12 +112,35 @@ def apis():
 		login=login, user=user)
 	return make_response(render)
 
+@app.route('/apis/getUsernameById/<uid>', methods=['GET'])
+def getUsernameById(uid):
+    """Get user by ID"""
+
+    userpage = urllib2.urlopen("http://google.com")
+    page_source = userpage.read()
+
+    #index = page_source.find("USERNAME_ID/CLASS")
+    #endIndex = page_source.find("USERNAME_END_TAG")
+    #username = page_source[index:endIndex] # Add tag length and then subtract tag length
+    return page_source
+
 def session_login(username):
     """Initializes the session with the current user's id"""
     user = db['users'].find_one(username=username)
     session['user_id'] = user['id']
 
-@app.route('/login', methods = ['POST'])
+@app.route('/login')
+def loginPage():
+    """Displays the login page"""
+
+    login, user = get_user()
+
+    render = render_template('frame.html', page='login.html',
+        login=login, user=user)
+
+    return make_response(render)
+
+@app.route('/logins', methods = ['POST'])
 def login():
     """Attempts to log the user in"""
 
