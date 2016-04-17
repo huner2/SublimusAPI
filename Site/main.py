@@ -151,7 +151,7 @@ def session_login(username):
     """Initializes the session with the current user's id"""
     user = db['users'].find_one(username=username)
     session['user_id'] = user['id']
-
+'''
 @app.route('/login')
 def loginPage():
     """Displays the login page"""
@@ -192,7 +192,7 @@ def register():
     # Render template
     render = render_template('frame.html', page='register.html', login=False, minpasslength=minpasslength)
     return make_response(render)
-	
+
 @app.route('/register/submit', methods = ['POST'])
 def register_submit():
     """Attempts to register a new user"""
@@ -222,7 +222,7 @@ def register_submit():
     session_login(username)
 
     return redirect('/')
-
+'''
 @app.route('/logout')
 @login_required
 def logout():
