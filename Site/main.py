@@ -114,15 +114,38 @@ def apis():
 
 @app.route('/apis/getUsernameById/<uid>', methods=['GET'])
 def getUsernameById(uid):
-    """Get user by ID"""
+	"""Get user by ID"""
+	try:
+		userpage = urllib2.urlopen("http://www.roblox.com/users/" + uid + "/profile")
+	except urllib2.HTTPError, err:
+		return jsonify({'response': err.code})
+	
+	page_source = userpage.read()
 
-    userpage = urllib2.urlopen("http://google.com")
-    page_source = userpage.read()
+	index = page_source.find("<h2>", page_source.find("header-title"))
+	endIndex = page_source.find("</h2>", index)
+	username = page_source[index+4:endIndex] # Add tag length
+	return jsonify({'response': 200, 'username': username})
 
-    #index = page_source.find("USERNAME_ID/CLASS")
-    #endIndex = page_source.find("USERNAME_END_TAG")
-    #username = page_source[index:endIndex] # Add tag length and then subtract tag length
-    return page_source
+@app.route('/apis/getIdByUsername/<username>', methods=['GET'])
+def getIdByUsername(username):
+	"""Get ID by user"""
+	
+	search = urllib2.urlopen("http://m.roblox.com/User/DoSearch?startRow=0&keyword="+username)
+	page_source = search.read()
+	
+	index = page_source.find("alt=")
+	endIndex = page_source.find("/>", index)
+	firstUsername = page_source[index+5:endIndex-3]
+	
+	if (username.lower() != firstUsername.lower()):
+		return jsonify({'response': -1337})
+	
+	index = page_source.find("/users")
+	endIndex = page_source.find(">", index)
+	id = page_source[index + 7:endIndex-1]
+	
+	return jsonify({'response': 200, 'id': id})
 
 def session_login(username):
     """Initializes the session with the current user's id"""

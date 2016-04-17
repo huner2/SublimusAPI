@@ -150,3 +150,6 @@ textarea{
 	left: 25% !important;
 	position:relative;
 }
+#apilist > p{
+	text-align:left !important;
+}
