@@ -194,7 +194,7 @@ def getClanById(cid):
 	page_source = apicall.read()
 	
 	return jsonify({'response': 200, 'info':page_source})
-"""
+
 @app.route('/apis/getFriendsOfUser/<uid>/<page>', methods=['GET'])
 def friendsOfUser(uid, page):
 	"""Get a paged list of friends for the  specified user"""
@@ -208,52 +208,6 @@ def friendsOfUser(uid, page):
 
 	return jsonify({'response': 200, 'info': page_source})
 
-@app.route('/apis/getUserFriendshipCount/<uid>', methods=['GET'])
-def getUserFriendshipCount(uid):
-	"""Get the count of friends a user has"""
-
-	try:
-		apicall = urllib2.urlopen("http://api.roblox.com/user/get-friendship-count?userId="+uid)
-	except urllib2.HTTPError, err:
-		return jsonify({'response': err.code})
-
-	page_source = apicall.read()
-
-	jsony = json.loads(page_source)
-	if jsony["success"] == False:
-		return jsonify({'response': -1337})
-
-	return jsonify({'response': 200, 'count': jsony["count"]})
-
-@app.route('/apis/getUserFollowingExists/<uid>/<fid>',methods=['GET'])
-def getUserFollowingExists(uid, fid):
-	"""Return whether a user is following another, uid being the one following, the fid being the user being followed"""
-
-	try:
-		apicall = urllib2.urlopen("http://api.roblox.com/user/following-exists?userId="+fid+"&followerUserId="+uid)
-	except urllib2.HTTPError, err:
-		return jsonify({'response': err.code})
-
-	page_source = apicall.read()
-
-	jsony = json.loads(page_source)
-	if jsony["success"] == False:
-		return jsonify({'response': -1337})
-
-	return jsonify({'response': 200, 'isFollowing': jsony['isFollowing']})
-
-@app.route('/apis/getUserFollowers/<uid>/<page>'):
-	"""Return the list of followers of a given user"""
-
-	try:
-		apicall = urllib2.open("http://api.roblox.com/users/followers?userId="+uid+"&page="+page)
-	except urllib2.HTTPError, err:
-		return jsonify({'response': err.code})
-
-	page_source = apicall.read()
-
-	return jsonify({'response': 200, 'followers': page_source})
-"""
 @app.route('/apis/getIdByUsername/<username>', methods=['GET'])
 def getIdByUsername(username):
 	"""Get ID by user"""
