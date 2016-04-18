@@ -137,6 +137,15 @@ def userCanManageAsset(uid, aid):
 	
 	return jsonify({'response': 200, 'manage': jsony["CanManage"]})
 	
+@app.route('/apis/userHasAsset/<uid>/<aid>', methods=['GET'])
+def userHasAsset(uid, aid):
+	"""Return if a user has an asset"""
+	
+	apicall = urllib2.urlopen("http://api.roblox.com/ownership/hasasset?userId="+uid+"&assetId="+aid)
+	page_source = apicall.read()
+	
+	return jsonify({'response': 200, 'has':page_source})
+	
 @app.route('/apis/getIdByUsername/<username>', methods=['GET'])
 def getIdByUsername(username):
 	"""Get ID by user"""
