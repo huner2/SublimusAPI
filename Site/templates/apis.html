@@ -22,7 +22,35 @@
 		<h2>Asset APIs</h2>
 		<br>
 		<h3>getMarketplaceInfo</h3>
-		<p>Send a <code>GET</code> request to <code>http://SublimusAPI.us.to/apis/getMarketplaceInfo/ASSETID</code> to get the info of an asset, returned as a JSON object</p>
+		<p>Send a <code>GET</code> request to <code>http://SublimusAPI.us.to/apis/getMarketplaceInfo/ASSETID</code> to get the info of an asset, returned as a JSON encoded string that decodes as follows:</p>
+		<code>
+{<br>
+	["AssetID"] = long,
+	["ProductID"] = long,
+	["Name"] = string,
+	["Description"] = string,
+	["AssetTypeId"] = integer,
+	["Creator"] = {
+					["Id"] = integer,
+					["Name"] = string
+				  }
+	["IconImageAssetId"] = long,
+	["Created"] = string,
+	["Updated"] = string,
+	["PriceInRobux"] = integer,
+	["PriceInTickets"] = null, -- Deprecated
+	["Sales"] = integer,
+	["IsNew"] = boolean,
+	["IsForSale"] = boolean,
+	["IsPublicDomain"] = boolean,
+	["IsLimited"] = boolean,
+	["IsLimitedUnique"] = boolean,
+	["Remaining"] = integer or null,
+	["MinimumMembershipLevel"] = integer,
+	["ContentRatingTypeId"] = integer
+}
+		</code>
+		
 	</center>
   </div>
 </div>
