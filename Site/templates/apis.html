@@ -22,35 +22,34 @@
 		<h2>Asset APIs</h2>
 		<br>
 		<h3>getMarketplaceInfo</h3>
-		<p>Send a <code>GET</code> request to <code>http://SublimusAPI.us.to/apis/getMarketplaceInfo/ASSETID</code> to get the info of an asset, returned as a JSON encoded string that decodes as follows:</p>
+		<p>Send a <code>GET</code> request to <code>http://SublimusAPI.us.to/apis/getMarketplaceInfo/ASSETID</code> to get the info of an asset (marketplace, or not, this includes places), returned as a JSON encoded string that decodes as follows:</p>
+		</center>
 		<code>
 {<br>
-	["AssetID"] = long,
-	["ProductID"] = long,
-	["Name"] = string,
-	["Description"] = string,
-	["AssetTypeId"] = integer,
-	["Creator"] = {
-					["Id"] = integer,
-					["Name"] = string
-				  }
-	["IconImageAssetId"] = long,
-	["Created"] = string,
-	["Updated"] = string,
-	["PriceInRobux"] = integer,
-	["PriceInTickets"] = null, -- Deprecated
-	["Sales"] = integer,
-	["IsNew"] = boolean,
-	["IsForSale"] = boolean,
-	["IsPublicDomain"] = boolean,
-	["IsLimited"] = boolean,
-	["IsLimitedUnique"] = boolean,
-	["Remaining"] = integer or null,
-	["MinimumMembershipLevel"] = integer,
-	["ContentRatingTypeId"] = integer
+	&nbsp;&nbsp;&nbsp;&nbsp;["AssetID"] = long,<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;["ProductID"] = long,<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;["Name"] = string,<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;["Description"] = string,<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;["AssetTypeId"] = integer,<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;["Creator"] = {<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;["Id"] = integer,<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;["Name"] = string<br>
+				  &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;["IconImageAssetId"] = long,<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;["Created"] = string,<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;["Updated"] = string,<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;["PriceInRobux"] = integer,<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;["PriceInTickets"] = null, -- Deprecated<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;["Sales"] = integer,<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;["IsNew"] = boolean,<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;["IsForSale"] = boolean,<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;["IsPublicDomain"] = boolean,<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;["IsLimited"] = boolean,<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;["IsLimitedUnique"] = boolean,<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;["Remaining"] = integer or null,<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;["MinimumMembershipLevel"] = integer,<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;["ContentRatingTypeId"] = integer<br>
 }
 		</code>
-		
-	</center>
   </div>
 </div>

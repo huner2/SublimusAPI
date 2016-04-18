@@ -131,7 +131,11 @@ def getUsernameById(uid):
 def userCanManageAsset(uid, aid):
 	"""Return if a user can manage an asset"""
 	
-	apicall = urllib2.urlopen("http://api.roblox.com/users/"+uid+"/canmanage/"+aid)
+	try:
+		apicall = urllib2.urlopen("http://api.roblox.com/users/"+uid+"/canmanage/"+aid)
+	except urllib2.HTTPError, err:
+		return jsonify({'response': err.code})
+
 	page_source = apicall.read()
 	jsony = json.loads(page_source)
 	
@@ -143,15 +147,18 @@ def userCanManageAsset(uid, aid):
 @app.route('/apis/userHasAsset/<uid>/<aid>', methods=['GET'])
 def userHasAsset(uid, aid):
 	"""Return if a user has an asset"""
-	
-	apicall = urllib2.urlopen("http://api.roblox.com/ownership/hasasset?userId="+uid+"&assetId="+aid)
+	try:
+		apicall = urllib2.urlopen("http://api.roblox.com/ownership/hasasset?userId="+uid+"&assetId="+aid)
+	except urllib2.HTTPError, err:
+		return jsonify({'response': err.code})
+
 	page_source = apicall.read()
 	
 	return jsonify({'response': 200, 'has':page_source})
 	
 @app.route('/apis/getMarketplaceInfo/<aid>')
 def getMarketPlaceInfo(aid):
-	"""Return product info for given asset"""
+	"""Return product info for given product"""
 	
 	try:
 		apicall = urllib2.urlopen("http://api.roblox.com/marketplace/productinfo?assetId="+aid)
@@ -162,11 +169,28 @@ def getMarketPlaceInfo(aid):
 	
 	return jsonify({'response': 200, 'info':page_source})
 	
+@app.route('/apis/getClanByUser/<uid>')
+def getClanByUser(uid):
+	"""Get clan information for given user id"""
+	
+	try:
+		apicall = urllib2.urlopen("http://api.roblox.com/clans/get-by-user?userId="+uid)
+	except urllib2.HTTPError, err:
+		return jsonify({'response': err.code})
+	
+	page_source = apicall.read()
+	
+	return jsonify({'response': 200, 'info':page_source})
+	
 @app.route('/apis/getIdByUsername/<username>', methods=['GET'])
 def getIdByUsername(username):
 	"""Get ID by user"""
 	
-	search = urllib2.urlopen("http://m.roblox.com/User/DoSearch?startRow=0&keyword="+username)
+	try:
+		search = urllib2.urlopen("http://m.roblox.com/User/DoSearch?startRow=0&keyword="+username)
+	except urllib2.HTTPError, err:
+		return jsonify({'response': err.code})
+
 	page_source = search.read()
 	
 	index = page_source.find("alt=")
