@@ -18,12 +18,28 @@
 		<h3>userHasAsset</h3>
 		<p>Send a <code>GET</code> request to <code>http://SublimusAPI.us.to/apis/userHasAsset/USERID/ASSETID</code> to get whether a user has an asset or not</p>
 		<hr>
+		<h3>getFriendsOfUser</h3>
+		<p>Send a <code>GET</code> request to <code>http://SublimusAPI.us.to/apis/getFriendsOfUser/USERID/PAGENUMBER</code> to get a list of the users friends on the current page, this will return an encoded JSON string that decodes as follows:
+	</center>
+		<code>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;["Id"] = long,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;["Username"] = string,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;["AvatarUri"] = string,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;["AvatarFinal"] = boolean,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;["IsOnline"] = boolean<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp; -- And so on for remaining users<br>
+}
+		</code>
+	<center id="apilist">
 		<br>
 		<h2>Asset APIs</h2>
 		<br>
 		<h3>getMarketplaceInfo</h3>
 		<p>Send a <code>GET</code> request to <code>http://SublimusAPI.us.to/apis/getMarketplaceInfo/ASSETID</code> to get the info of an asset (marketplace, or not, this includes places), returned as a JSON encoded string that decodes as follows:</p>
-		</center>
+	</center>
 		<code>
 {<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;["AssetID"] = long,<br>
@@ -51,14 +67,14 @@
 	&nbsp;&nbsp;&nbsp;&nbsp;["ContentRatingTypeId"] = integer<br>
 }
 		</code>
-		<center id="apilist">
+	<center id="apilist">
 		<hr>
 		<br>
 		<h2>Clan APIs</h2>
 		<br>
 		<h3>getClanByUser</h3>
-		<p>Send a <code>GET</code> request to <code>http://SublimusAPI.us.to/apis/getClanByUser/USERID</code> to get the properties of the user's can returned as an encoded json string, that decodes as follows:
-		</center>
+		<p>Send a <code>GET</code> request to <code>http://SublimusAPI.us.to/apis/getClanByUser/USERID</code> to get the properties of the user's can returned as an encoded JSON string, that decodes as follows:
+	</center>
 		<code>
 {<br>
 &nbsp;&nbsp;&nbsp;&nbsp;["Id"] = long,<br>
@@ -67,11 +83,11 @@
 }
 		</code>
 		<br>
-		<center id="apilist">
+	<center id="apilist">
 		<hr>
 		<h3>getClanById</h3>
-		<p>Send a <code>GET</code> request to <code>http://SublimusAPI.us.to/apis/getClanById</code> to get the properties of the clan of the given id as an encoded json string, that decodes as follows:</p>
-		</center>
+		<p>Send a <code>GET</code> request to <code>http://SublimusAPI.us.to/apis/getClanById</code> to get the properties of the clan of the given id as an encoded JSON string, that decodes as follows:</p>
+	</center>
 		<code>
 {<br>
 &nbsp;&nbsp;&nbsp;&nbsp;["Id"] = long,<br>
