@@ -135,6 +135,9 @@ def userCanManageAsset(uid, aid):
 	page_source = apicall.read()
 	jsony = json.loads(page_source)
 	
+	if jsony["Success"] == False:
+		return jsonify({'response': -1337})
+	
 	return jsonify({'response': 200, 'manage': jsony["CanManage"]})
 	
 @app.route('/apis/userHasAsset/<uid>/<aid>', methods=['GET'])
@@ -145,6 +148,19 @@ def userHasAsset(uid, aid):
 	page_source = apicall.read()
 	
 	return jsonify({'response': 200, 'has':page_source})
+	
+@app.route('/apis/getMarketplaceInfo/<aid>')
+def getMarketPlaceInfo(aid):
+	"""Return product info for given asset"""
+	
+	try:
+		apicall = urllib2.urlopen("http://api.roblox.com/marketplace/productinfo?assetId="+aid)
+	except urllib2.HTTPError, err:
+		return jsonify({'response': err.code})
+		
+	page_source = apicall.read()
+	
+	return jsonify({'response': 200, 'info':page_source})
 	
 @app.route('/apis/getIdByUsername/<username>', methods=['GET'])
 def getIdByUsername(username):
