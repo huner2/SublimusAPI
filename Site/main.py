@@ -156,7 +156,7 @@ def userHasAsset(uid, aid):
 	
 	return jsonify({'response': 200, 'has':page_source})
 	
-@app.route('/apis/getMarketplaceInfo/<aid>')
+@app.route('/apis/getMarketplaceInfo/<aid>', methods=['GET'])
 def getMarketPlaceInfo(aid):
 	"""Return product info for given product"""
 	
@@ -169,7 +169,7 @@ def getMarketPlaceInfo(aid):
 	
 	return jsonify({'response': 200, 'info':page_source})
 	
-@app.route('/apis/getClanByUser/<uid>')
+@app.route('/apis/getClanByUser/<uid>', methods=['GET'])
 def getClanByUser(uid):
 	"""Get clan information for given user id"""
 	
@@ -178,6 +178,19 @@ def getClanByUser(uid):
 	except urllib2.HTTPError, err:
 		return jsonify({'response': err.code})
 	
+	page_source = apicall.read()
+	
+	return jsonify({'response': 200, 'info':page_source})
+	
+@app.route('/apis/getClanById/<cid>', methods=['GET'])
+def getClanById(cid):
+	"""Get clan information for given clan id"""
+	
+	try:
+		apicall = urllib2.urlopen("http://api.roblox.com/clans/get-by-id?clanId="+cid)
+	except urllib2.HTTPError, err:
+		return jsonify({'response': err.code})
+		
 	page_source = apicall.read()
 	
 	return jsonify({'response': 200, 'info':page_source})

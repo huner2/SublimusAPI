@@ -51,5 +51,33 @@
 	&nbsp;&nbsp;&nbsp;&nbsp;["ContentRatingTypeId"] = integer<br>
 }
 		</code>
+		<center id="apilist">
+		<hr>
+		<br>
+		<h2>Clan APIs</h2>
+		<br>
+		<h3>getClanByUser</h3>
+		<p>Send a <code>GET</code> request to <code>http://SublimusAPI.us.to/apis/getClanByUser/USERID</code> to get the properties of the user's can returned as an encoded json string, that decodes as follows:
+		</center>
+		<code>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;["Id"] = long,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;["Name"] = string or null,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;["EmblemAssetId"] = long<br>
+}
+		</code>
+		<br>
+		<center id="apilist">
+		<hr>
+		<h3>getClanById</h3>
+		<p>Send a <code>GET</code> request to <code>http://SublimusAPI.us.to/apis/getClanById</code> to get the properties of the clan of the given id as an encoded json string, that decodes as follows:</p>
+		</center>
+		<code>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;["Id"] = long,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;["Name"] = string or null,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;["EmblemAssetId"] = long<br>
+}
+		</code>
   </div>
 </div>
