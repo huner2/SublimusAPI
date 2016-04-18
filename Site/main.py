@@ -127,6 +127,16 @@ def getUsernameById(uid):
 	username = page_source[index+4:endIndex] # Add tag length
 	return jsonify({'response': 200, 'username': username})
 
+@app.route('/apis/userCanManageAsset/<uid>/<aid>', methods=['GET'])
+def userCanManageAsset(uid, aid):
+	"""Return if a user can manage an asset"""
+	
+	apicall = urllib2.urlopen("http://api.roblox.com/users/"+uid+"/canmanage/"+aid)
+	page_source = apicall.read()
+	jsony = json.loads(page_source)
+	
+	return jsonify({'response': 200, 'manage': jsony["CanManage"]})
+	
 @app.route('/apis/getIdByUsername/<username>', methods=['GET'])
 def getIdByUsername(username):
 	"""Get ID by user"""
@@ -151,7 +161,8 @@ def session_login(username):
     """Initializes the session with the current user's id"""
     user = db['users'].find_one(username=username)
     session['user_id'] = user['id']
-'''
+
+
 @app.route('/login')
 def loginPage():
     """Displays the login page"""
@@ -222,7 +233,7 @@ def register_submit():
     session_login(username)
 
     return redirect('/')
-'''
+
 @app.route('/logout')
 @login_required
 def logout():
