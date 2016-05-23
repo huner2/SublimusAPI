@@ -1,4 +1,4 @@
---[[ If for some reason you are testing this right now, be aware, it is not gonna work like expected whatsoever.
+--[[
 	Created By Sublimus, you can modify it, redistribute it all you like, just don't take credit for the original.
 	
 	Please check out SublimusAPI.us.to:69 for usage, as well as source code.
